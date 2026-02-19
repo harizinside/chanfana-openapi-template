@@ -47,4 +47,26 @@ openapi.route("/tasks", tasksRouter);
 openapi.post("/dummy/:slug", DummyEndpoint);
 
 // Export the Hono app
-export default app;
+export default {
+  fetch: app.fetch,
+
+  async email(message: ForwardableEmailMessage, env: Env, ctx: ExecutionContext) {
+    console.log("Email from:", message.from);
+
+    for (const attachment of message.attachments) {
+      if (attachment.filename?.endsWith(".xlsx")) {
+        const fileBuffer = await attachment.arrayBuffer();
+
+        await fetch("https://api-domain-lo.com/email-upload", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/octet-stream",
+            "X-From": message.from,
+            "X-Subject": message.headers.get("subject") || "",
+          },
+          body: fileBuffer,
+        });
+      }
+    }
+  },
+};
