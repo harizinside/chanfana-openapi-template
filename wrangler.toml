@@ -1,0 +1,13 @@
+main = "dist/index.js"
+name = "chanfana-openapi-template"
+compatibility_date = "2025-10-08"
+
+upload_source_maps = true
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_id = "3e3c4c71-f5bc-4961-98f7-506d9509d500"
+database_name = "nmwclinic"

@@ -1,15 +1,16 @@
 {
-	"compilerOptions": {
-		"target": "esnext",
-		"lib": ["esnext"],
-		"module": "esnext",
-		"moduleResolution": "bundler",
-		"types": ["@types/node", "./worker-configuration.d.ts"],
-		"noEmit": true,
-		"isolatedModules": true,
-		"forceConsistentCasingInFileNames": true,
-		"skipLibCheck": true,
-		"strict": true
-	},
-	"include": ["src"]
+    "compilerOptions": {
+        "target": "esnext",
+        "lib": ["esnext"],
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "types": ["@types/bun", "@types/node", "./worker-configuration.d.ts"],
+        "baseUrl": "./src",
+        "noEmit": true,
+        "isolatedModules": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "strict": true
+    },
+    "include": ["src"]
 }
